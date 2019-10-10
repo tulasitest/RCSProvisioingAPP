@@ -4,7 +4,7 @@
     package="com.example.rcsprovisioingapp">
 
     <uses-permission android:name="android.permission.CLEAR_APP_CACHE"
-        android:="signature|privileged" />
+        tools:ignore="ProtectedPermissions" />
 
     <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

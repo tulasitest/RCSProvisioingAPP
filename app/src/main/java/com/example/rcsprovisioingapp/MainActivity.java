@@ -56,10 +56,14 @@ public class MainActivity extends AppCompatActivity {
 
 
                 try {
-                    MyApplication.getInstance().clearApplicationData(MainActivity.this);
+                   // MyApplication.getInstance().clearApplicationData(MainActivity.this);
 
 
-                   //startInstalledAppDetailsActivity(MainActivity.this);
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.setClassName("com.example.androidsample", "com.example.androidsample.MainActivity");
+                    intent.putExtra("key","RCS PROVISIOING PROCESS");
+                    startActivity(intent);
+                    finish();
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -88,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent();
         i.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         i.addCategory(Intent.CATEGORY_DEFAULT);
-        i.setData(Uri.parse("package:" + "com.google.android.apps.messaging"));
+        i.setData(Uri.parse("package:" + "com.example.androidsample.MainActivity"));
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);

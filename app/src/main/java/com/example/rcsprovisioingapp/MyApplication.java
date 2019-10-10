@@ -23,17 +23,24 @@ public class MyApplication extends Application {
     }
 
     public void clearApplicationData(Context myAppctx) throws PackageManager.NameNotFoundException {
-        Context context = createPackageContext("com.example.myapplicationtest",
+        Context context = createPackageContext("com.google.android.apps.messaging",
                 Context.CONTEXT_IGNORE_SECURITY);
         File cache = context.getCacheDir();
         File appDir = new File(cache.getParent());
-        if(appDir.exists()){
-            String[] children = appDir.list();
-            for(String s : children){
-                if(!s.equals("lib")){
-                    deleteDir(new File(appDir, s));
-                    Log.i("TAG", "**************** File /data/data/APP_PACKAGE/" + s +" DELETED *******************");
+        if(appDir.exists()) {
+            if (appDir.listFiles() != null && appDir.listFiles().length > 0) {
+
+                String[] children = appDir.list();
+                for (String s : children) {
+                    if (!s.equals("lib")) {
+                        deleteDir(new File(appDir, s));
+                        Log.i("TAG", "**************** File /data/data/APP_PACKAGE/" + s + " DELETED *******************");
+                    }
                 }
+            }else{
+                appDir.delete();
+                Log.i("TAG", "**************** File /data/data/APP_PACKAGE/"  + " DELETED *******************");
+
             }
         }
     }
